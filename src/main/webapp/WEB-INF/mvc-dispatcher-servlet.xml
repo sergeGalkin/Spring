@@ -23,4 +23,8 @@
         </property>
     </bean>
 
+    <bean id="accessDeniedHandler" class="com.handler.MyAccessDeniedHandler">
+        <property name="accessDeniedUrl" value="403"/>
+    </bean>
+
 </beans>

@@ -8,27 +8,29 @@
 	http://www.springframework.org/schema/security/spring-security-3.2.xsd">
 
     <http auto-config="true">
-        <intercept-url pattern="/welcome*" access="ROLE_USER" />
+        <intercept-url pattern="/welcome*" access="ROLE_USER"/>
         <form-login login-page="/login" default-target-url="/welcome"
-                    authentication-failure-url="/loginfailed" />
-        <logout logout-success-url="/logout" />
+                    authentication-failure-url="/loginfailed"/>
+        <logout logout-success-url="/logout"/>
+        <access-denied-handler ref="accessDeniedHandler"/>
     </http>
 
     <authentication-manager>
         <authentication-provider>
             <jdbc-user-service data-source-ref="dataSource"
                                users-by-username-query="
-		      select username, password, enabled
-		      from users where username=?"
+		      SELECT username, password, enabled
+		      FROM users WHERE username=?"
 
                                authorities-by-username-query="
-		      select u.username, ur.authority from users u, user_roles ur
-		      where u.user_id = ur.user_id and u.username =?  "
+		      SELECT u.username, ur.authority FROM users u, user_roles ur
+		      WHERE u.user_id = ur.user_id AND u.username =?  "
+            />
 
-              />
-            <!--<user-service>-->
-                <!--<user name="sergexml" password="123456" authorities="ROLE_USER" />-->
-            <!--</user-service>-->
+           <!-- <user-service>
+                <user name="sergexml" password="123456" authorities="ROLE_USER"/>
+                <user name="serge" password="123456" authorities="ROLE_ADMIN"/>
+            </user-service>-->
 
         </authentication-provider>
     </authentication-manager>

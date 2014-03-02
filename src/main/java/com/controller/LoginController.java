@@ -23,7 +23,8 @@ public class LoginController {
 
         String name = principal.getName();
         model.addAttribute("username", name);
-        model.addAttribute("message", "Spring Security Custom Form example");
+        model.addAttribute("message1", "Spring Security Custom Form example");
+        model.addAttribute("message2", "Spring Security - ROLE_ADMIN");
         return "hello";
 
     }
@@ -46,4 +47,11 @@ public class LoginController {
 
         return "login";
     }
+
+    @RequestMapping(value = "/403")
+    public String accessDenied() {
+
+        return "403";
+    }
+
 }
