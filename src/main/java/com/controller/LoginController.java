@@ -32,7 +32,6 @@ public class LoginController {
     public String login(ModelMap model) {
 
         return "login";
-
     }
 
     @RequestMapping(value="/loginfailed", method = RequestMethod.GET)
@@ -40,13 +39,11 @@ public class LoginController {
 
         model.addAttribute("error", "true");
         return "login";
-
     }
 
     @RequestMapping(value="/logout", method = RequestMethod.GET)
     public String logout(ModelMap model) {
 
         return "login";
-
     }
 }
